@@ -60,13 +60,13 @@ public class ExampleTests {
     }
 
 
-    private synchronized List<User> getUsers() {
+    private List<User> getUsers() {
         final String response = query("GET", "", null);
 
 		return parser.checkAndParseUserList(response);
 	}
 
-    private synchronized List<User> createUser(User user) {
+    private List<User> createUser(User user) {
         try {
             final String params = String.format("firstName=%s&lastName=%s",
                     URLEncoder.encode(user.firstName, "utf-8"),
@@ -80,7 +80,7 @@ public class ExampleTests {
         }
     }
 
-    private synchronized List<User> updateUser(User user) {
+    private List<User> updateUser(User user) {
         try {
             final String params = String.format("firstName=%s&lastName=%s",
                     URLEncoder.encode(user.firstName, "utf-8"),
@@ -94,7 +94,7 @@ public class ExampleTests {
         }
 	}
 
-    private synchronized void deleteUser(User user) {
+    private void deleteUser(User user) {
         final String response = query("DELETE", user.id.toString(), null);
 	}
 
